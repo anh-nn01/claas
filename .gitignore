@@ -1,0 +1,28 @@
+# Ignore Hugging Face / Space temp files
+src_hf_deploy/
+wandb/
+tmp/
+__pycache__/
+venvs/
+src/legacy-code/
+src/output_directory/
+src/sbatch/logs/
+src/sbatch/ablations/logs
+src/unsloth/
+src/unsloth_compiled_cache/
+src-avatar/
+src/.gradio/
+src/demo_task1_backup.py
+src/demo_llm.py
+src/wandb
+src/__pycache__
+*.pyc
+
+
+# Ignore local env / caches
+.venvs/
+.env
+.cache/
+.ipython/
+.triton/
+.ollama 
