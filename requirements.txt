@@ -1,0 +1,19 @@
+numpy
+pandas
+pillow
+langchain
+langchain-core
+langchain-community
+langchain-ollama 
+# ollama==0.4.2
+tqdm
+torch
+unsloth==2025.3.19
+unsloth_zoo==2025.3.17
+termcolor
+python-dotenv
+transformers==4.50.0
+wandb
+
+# Image Generation
+git+https://github.com/huggingface/diffusers.git
