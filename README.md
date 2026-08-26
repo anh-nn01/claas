@@ -1,8 +1,8 @@
 # 🌱 CLAAS: Conditional LVLM-enabled Attribute-Aware response Simulation for Public Health Education   
 
 [![arXiV](https://img.shields.io/badge/arxiv-link-red)](https://i0.wp.com/www.shelbycountyyap.org/wp-content/uploads/2023/08/Website-Images.png?resize=900%2C900&ssl=1) 
-[![Website](https://img.shields.io/badge/website-link-purple)](![google.com](https://i0.wp.com/www.shelbycountyyap.org/wp-content/uploads/2023/08/Website-Images.png?resize=900%2C900&ssl=1)) 
-[![Dataset](https://img.shields.io/badge/dataset-huggingface-yellow)](![google.com](https://i0.wp.com/www.shelbycountyyap.org/wp-content/uploads/2023/08/Website-Images.png?resize=900%2C900&ssl=1)) 
+[![Website](https://img.shields.io/badge/website-link-purple)](https://i0.wp.com/www.shelbycountyyap.org/wp-content/uploads/2023/08/Website-Images.png?resize=900%2C900&ssl=1) 
+[![Dataset](https://img.shields.io/badge/dataset-huggingface-yellow)](https://i0.wp.com/www.shelbycountyyap.org/wp-content/uploads/2023/08/Website-Images.png?resize=900%2C900&ssl=1) 
 
 <!-- ![Paper Picture Highlight](assets/to_be_updated.png) -->
 
