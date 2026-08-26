@@ -101,11 +101,21 @@ python inference_pred_llm.py
 ---
 ### Step 4. Model Evaluation & Performance Analysis
 Open and run `healthai_model_analysis.ipynb` to:
-1. Evaluate model performance and alignment scores.
-2. Compute on-the-fly random baselines:
-  * `policy-random-uniform`: Uniform random sampler.
-  * `policy-random-priors`: Prior distribution-guided sampler.
+1. Measure model performance and alignment using predicted and ground-truth (GT) Likert-scale responses.
+2. Evaluate each model only on its corresponding held-out test set, where responses are associated with an unseen communication strategy.
+3. Compute random baselines at evaluation time:
+  - `policy-random-uniform`: samples responses uniformly at random.
+  - `policy-random-priors`: samples responses according to prior distributions.
 ---
+
+
+## ⏳ TODO
+- [ ] Add webpage for the project
+- [ ] Update Likert2Language module with close-source model APIs (e.g. GPT-5.6)
+- [ ] Upload Colab link to evaluation notebook
+- [ ] Upload Colab link to Likert2Language ablation module (used in manual human evaluation)
+
+
 ## 📜 Citation
 ```bibtex
 To be updated
