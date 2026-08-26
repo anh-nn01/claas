@@ -4,6 +4,7 @@ wandb/
 tmp/
 __pycache__/
 venvs/
+requirements_freeze.txt
 src/legacy-code/
 src/output_directory/
 src/sbatch/logs/
