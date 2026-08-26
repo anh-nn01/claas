@@ -2,6 +2,9 @@
 [![arXiv](https://img.shields.io/badge/arXiv-Paper-red)](#)
 [![Website](https://img.shields.io/badge/Website-Project-purple)](#)
 [![Dataset](https://img.shields.io/badge/Dataset-HuggingFace-yellow)](#)
+
+![VLM-Enabled Attributed-Aware response Simulation](src/assets/VLM_sim_pipeline.png)
+
 ---
 ## I. Installation
 ```bash
