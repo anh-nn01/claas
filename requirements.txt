@@ -1,19 +1,19 @@
-numpy
-pandas
-pillow
-langchain
-langchain-core
-langchain-community
-langchain-ollama 
+numpy==2.2.4
+pandas==2.2.3
+pillow==11.2.1
+langchain==0.3.23
+langchain-core==0.3.52
+langchain-community==0.3.21
+langchain-ollama ==0.2.1
 # ollama==0.4.2
-tqdm
-torch
+tqdm==4.67.1
+torch==2.6.0
 unsloth==2025.3.19
 unsloth_zoo==2025.3.17
-termcolor
-python-dotenv
+termcolor==3.0.1
+python-dotenv==1.1.0
 transformers==4.50.0
-wandb
+wandb==0.19.10
 
 # Image Generation
-git+https://github.com/huggingface/diffusers.git
+diffusers @ git+https://github.com/huggingface/diffusers.git@ee40088fe5437f8ed65ec96a22250149e4f334cc
