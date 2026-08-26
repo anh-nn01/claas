@@ -13,7 +13,7 @@ These shell scripts are cluster launch examples for the VLM-enabled Attribute-Aw
 | `ablations/train_llm_ablation_1.sh`-`3.sh` | Ablation training examples |
 | `ablations/inference_llm.sh` | Ablation inference example |
 
-## NOTE
+### Guidelines
 1) These scripts contain hard-coded `/fs/nexus-projects/health_sim_ai` paths, environment location `venvs/llm`, and SLURM settings. 
 2) Update the variables before launching a job on your machine. 
 3) Output and error destinations under `logs/` are generated artifacts and are intentionally not part of the source instructions.
