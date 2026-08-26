@@ -1,0 +1,93 @@
+temperature: 0.
+top_p: 1.0
+stochastic: False # deterministic
+seed: 99
+infer_engine: "unsloth"
+data_path: "$HOME/data/survey_responses_screened.csv" # make sure to export HOME to project path
+
+export_path: "$HOME/src/evals/task1_ai_responses_ablat.csv"
+version: ":community_sim:ablation_traits"
+
+# ##########################################
+# ### Ablation 1: No demographic traits ####
+# ##########################################
+# include_demo: false # use demographic attributes or not
+# demo_full: false     # use full demographic attributes or selected only
+# include_big5: true  # use big5 traits or not
+# include_facet: true # use facet traits or not
+# include_locus: true # use locus of control traits or not
+# vision: true        # default
+# trait: true         # default
+
+# ### Model selection
+# # Model A: heldout Self-Efficacy Posters
+# # model: "unsloth/gemma-3-12b-it_task1_1_epochs_test_efficacy_ablation_noDemo"
+# # # Model B: heldout Threatening Posters
+# # model: "unsloth/gemma-3-12b-it_task1_1_epochs_test_threatening_ablation_noDemo"
+# # # Model C: heldout Neutral Posters
+# # model: "unsloth/gemma-3-12b-it_task1_1_epochs_test_neutral_ablation_noDemo"
+
+
+
+
+
+# # ##########################################
+# # ### Ablation 2: No Big 5 traits       ####
+# # ##########################################
+# include_demo: true # use demographic attributes or not
+# demo_full: true     # use full demographic attributes or selected only
+# include_big5: false  # use big5 traits or not
+# include_facet: true # use facet traits or not
+# include_locus: true # use locus of control traits or not
+# vision: true        # default
+# trait: true         # default
+
+# # ### Model selection
+# # # Model A: heldout Self-Efficacy Posters
+# # model: "unsloth/gemma-3-12b-it_task1_1_epochs_test_efficacy_ablation_noBig5"
+# # # Model B: heldout Threatening Posters
+# # model: "unsloth/gemma-3-12b-it_task1_1_epochs_test_threatening_ablation_noBig5"
+# # # Model C: heldout Neutral Posters
+# # model: "unsloth/gemma-3-12b-it_task1_1_epochs_test_neutral_ablation_noBig5"
+
+
+
+
+
+##########################################
+### Ablation 3: No Facet traits       ####
+##########################################
+# include_demo: true # use demographic attributes or not
+# demo_full: true     # use full demographic attributes or selected only
+# include_big5: true  # use big5 traits or not
+# include_facet: false # use facet traits or not
+# include_locus: true # use locus of control traits or not
+# vision: true        # default
+# trait: true         # default
+
+# ### Model selection
+# # Model A: heldout Self-Efficacy Posters
+# model: "unsloth/gemma-3-12b-it_task1_1_epochs_test_efficacy_ablation_noFacet"
+# # Model B: heldout Threatening Posters
+# model: "unsloth/gemma-3-12b-it_task1_1_epochs_test_threatening_ablation_noFacet"
+# Model C: heldout Neutral Posters
+# model: "unsloth/gemma-3-12b-it_task1_1_epochs_test_neutral_ablation_noFacet"
+
+################################################
+### Ablation 4: No Big 5 + Facet + Locus traits       ####
+################################################
+include_demo: true # use demographic attributes or not
+demo_full: true     # use full demographic attributes or selected only
+include_big5: false  # use big5 traits or not
+include_facet: false # use facet traits or not
+include_locus: false # use locus of control traits or not
+vision: true        # default
+trait: true         # default
+
+### Model selection
+# Model A: heldout Self-Efficacy Posters
+model: "unsloth/gemma-3-12b-it_task1_1_epochs_test_efficacy_ablation_noBig5_noFacet_noLocus"
+# Model B: heldout Threatening Posters
+model: "unsloth/gemma-3-12b-it_task1_1_epochs_test_threatening_ablation_noBig5_noFacet_noLocus"
+# Model C: heldout Neutral Posters
+model: "unsloth/gemma-3-12b-it_task1_1_epochs_test_neutral_ablation_noBig5_noFacet_noLocus"

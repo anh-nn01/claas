@@ -1,0 +1,34 @@
+# model: "unsloth/gemma-3-4b-it" # zero-shot model
+# model: "unsloth/gemma-3-4b-it_mcq_1_epochs_recommender_test_NutriHeart"
+# model: "unsloth/gemma-3-4b-it_mcq_2_epochs_recommender_test_NutriHeart"
+# model: "unsloth/gemma-3-4b-it_mcq_3_epochs_recommender_test_NutriHeart"
+# model: "unsloth/gemma-3-4b-it_mcq_5_epochs_recommender_test_NutriHeart"
+model: "unsloth/gemma-3-4b-it_mcq_7_epochs_recommender_test_NutriHeart"
+
+# model: "unsloth/gemma-3-4b-it_mcq_3_epochs_recommender_test_NutriHeart_resample"
+# model: "unsloth/gemma-3-4b-it_mcq_5_epochs_recommender_test_NutriHeart_resample"
+# model: "unsloth/gemma-3-4b-it_mcq_7_epochs_recommender_test_NutriHeart_resample"
+
+# model: "unsloth/gemma-3-12b-it_mcq_3_epochs_recommender_test_NutriHeart"
+# model: "unsloth/gemma-3-12b-it_mcq_5_epochs_recommender_test_NutriHeart"
+
+# model: "unsloth/gemma-3-12b-it" # zero-shot model
+# model: "unsloth/gemma-3-12b-it_mcq_3_epochs_recommender_test_NutriHeart_resample"
+# model: "unsloth/gemma-3-12b-it_mcq_5_epochs_recommender_test_NutriHeart_resample"
+
+# model: "unsloth/gemma-3-4b-it_mcq_1_epochs_datav2"
+
+# model: "unsloth/Llama-3.1-8B-Instruct" # zero-shot model
+
+# model: "unsloth/Llama-3.2-11B-Vision-Instruct" # zero-shot model
+# model: "unsloth/Llama-3.2-11B-Vision-Instruct_mcq_1_epochs_recommender_test_NutriHeart"
+
+version: ":assess_impact" # append this to model name
+
+temperature: 0.
+top_p: 1.0
+stochastic: False # deterministic
+seed: 99
+infer_engine: "unsloth"
+data_path: "$HOME/data/survey_responses.csv" # "$HOME/data/survey_responses.csv" # make sure to export HOME to project path
+export_path: "$HOME/data/llm_recommender_ours_responses.csv"

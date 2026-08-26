@@ -1,0 +1,244 @@
+temperature: 0.
+top_p: 1.0
+stochastic: False # deterministic
+seed: 99
+infer_engine: "unsloth"
+data_path: "$HOME/data/survey_responses_screened.csv" # make sure to export HOME to project path
+
+# *******************************************************
+# *   CHOSE 1 OPTION ONLY: ORIGINAL OR DEPLOYMENT       *
+# *******************************************************
+#####################################################
+# (A) Original paper: True for all
+#####################################################
+include_demo: true # use demographic attributes or not
+demo_full: true     # use full demographic attributes or selected only
+include_big5: true  # use big5 traits or not
+include_facet: true # use facet traits or not
+include_locus: true # use locus of control traits or not
+export_path: "$HOME/src/evals/task1_ai_responses.csv"
+
+# #####################################################
+# # (B) Deployment: Partial demographics and Big5 only
+# #####################################################
+# demo_full: false     # use full demographic attributes or selected only
+# include_big5: true  # use big5 traits or not
+# include_facet: false # use facet traits or not
+# include_locus: false # use locus of control traits or not
+# export_path: "$HOME/src/evals/task1_ai_responses_partialDemo_noFacet_noLocus.csv"
+
+
+
+
+
+###########################################
+###########################################
+# When you run a job, choose ONE setting
+# and then COMMENT OUT THE rest!
+###########################################
+###########################################
+
+# ##################################
+# # 1. Zero-shot Gemma3 12b
+# model: "unsloth/gemma-3-12b-it"
+# version: ":zeroshot"
+# vision: true    # default 
+# trait: true     # default
+# ##################################
+# # 2. Zero-shot Gemma3 4b
+# model: "unsloth/gemma-3-4b-it"
+# version: ":zeroshot"
+# vision: true    # default 
+# trait: true     # default
+# # ##################################
+# # 3a FT Gemma3 4b
+# # ============================== #
+# ### Unseen Self-Efficacy Posters
+# model: "unsloth/gemma-3-4b-it_task1_1_epochs_test_efficacy"
+# version: ":community_sim:test_efficacy"
+# vision: true    # default 
+# trait: true     # default
+# # ============================== #
+# ### Unseen Neutral Posters
+# model: "unsloth/gemma-3-4b-it_task1_1_epochs_test_neutral"
+# version: ":community_sim:test_neutral"
+# vision: true    # default 
+# trait: true     # default
+# # ============================== #
+# ### Unseen threatening posters
+# model: "unsloth/gemma-3-4b-it_task1_1_epochs_test_threatening"
+# version: ":community_sim:test_threaten"
+# vision: true    # default 
+# trait: true     # default
+# ##################################
+
+# # ##################################
+# # 3b FT Gemma3 12b (full Traits)
+# # ============================== #
+# ### Unseen Self-Efficacy Posters
+# model: "unsloth/gemma-3-12b-it_task1_1_epochs_test_efficacy"
+# version: ":community_sim:test_efficacy"
+# vision: true    # default 
+# trait: true     # default
+# ============================== #
+### Unseen Neutral Posters
+# model: "unsloth/gemma-3-12b-it_task1_1_epochs_test_neutral"
+# version: ":community_sim:test_neutral"
+# vision: true    # default 
+# trait: true     # default
+# # ============================== #
+# ### Unseen threatening posters
+# model: "unsloth/gemma-3-12b-it_task1_1_epochs_test_threatening"
+# version: ":community_sim:test_threaten"
+# vision: true    # default 
+# trait: true     # default
+# ##################################
+
+# ##################################
+# 3c FT Gemma3 12b - partial Traits
+# ============================== #
+# ### Unseen Self-Efficacy Posters
+# model: "unsloth/gemma-3-12b-it_task1_1_epochs_test_efficacy_partialTraits"
+# version: ":community_sim:test_efficacy"
+# vision: true    # default 
+# trait: true     # default
+# # ============================== #
+# ### Unseen Neutral Posters
+# model: "unsloth/gemma-3-12b-it_task1_1_epochs_test_neutral_partialTraits"
+# version: ":community_sim:test_neutral"
+# vision: true    # default 
+# trait: true     # default
+# # ============================== #
+# ### Unseen threatening posters
+# model: "unsloth/gemma-3-12b-it_task1_1_epochs_test_threatening_partialTraits"
+# version: ":community_sim:test_threaten"
+# vision: true    # default 
+# trait: true     # default
+# ##################################
+
+
+# # ##################################
+# # # 4. Zero-shot Llama3.2 Vision 11B
+# model: "unsloth/Llama-3.2-11B-Vision-Instruct"
+# version: ":zeroshot"
+# vision: true    # default 
+# trait: true     # default
+# ##################################  
+# # 5. FT Llama3.2 Vision 11B
+# # ============================== #
+# ### Unseen Self-Efficacy Posters
+# model: "unsloth/Llama-3.2-11B-Vision-Instruct_task1_1_epochs_test_efficacy"
+# version: ":community_sim:test_efficacy"
+# vision: true    # default 
+# trait: true     # default
+# ============================== #
+### Unseen Neutral Posters
+model: "unsloth/Llama-3.2-11B-Vision-Instruct_task1_1_epochs_test_neutral"
+version: ":community_sim:test_neutral"
+vision: true    # default 
+trait: true     # default
+# ============================== #
+# ### Unseen threatening posters
+# model: "unsloth/Llama-3.2-11B-Vision-Instruct_task1_1_epochs_test_threatening"
+# version: ":community_sim:test_threaten"
+# vision: true    # default 
+# trait: true     # default
+# ##################################
+
+# ##################################
+# # 6. FT Gemma3 4b (novision)
+# # ============================== #
+# ### Unseen Self-Efficacy Posters
+# model: "unsloth/gemma-3-4b-it_task1_1_epochs_test_efficacy_novision"
+# version: ":community_sim:test_efficacy"
+# vision: false    
+# trait: true     
+# # ============================== #
+# ### Unseen Neutral Posters
+# model: "unsloth/gemma-3-4b-it_task1_1_epochs_test_neutral_novision"
+# version: ":community_sim:test_neutral"
+# vision: false    
+# trait: true     
+# ============================== #
+# ### Unseen threatening posters
+# model: "unsloth/gemma-3-4b-it_task1_1_epochs_test_threatening_novision"
+# version: ":community_sim:test_threaten"
+# vision: false    
+# trait: true     
+# ##################################
+# # 7. FT Gemma3 4b (notrait)
+# # ============================== #
+# ### Unseen Self-Efficacy Posters
+# model: "unsloth/gemma-3-4b-it_task1_1_epochs_test_efficacy"
+# version: ":community_sim:test_efficacy"
+# vision: true    
+# trait: false    
+# # ============================== # 
+# ### Unseen Neutral Posters
+# model: "unsloth/gemma-3-4b-it_task1_1_epochs_test_neutral"
+# version: ":community_sim:test_neutral"
+# vision: true    
+# trait: false    
+# # ============================== # 
+# ### Unseen threatening posters
+# model: "unsloth/gemma-3-4b-it_task1_1_epochs_test_threatening"
+# version: ":community_sim:test_threaten"
+# vision: true    
+# trait: false    
+# ##################################
+
+# ##################################
+# # 9. Zero-shot Qwen2.5 VL 7B
+# model: "unsloth/Qwen2-VL-7B-Instruct"
+# version: ":zeroshot"
+# vision: true    # default 
+# trait: true     # default
+# ##################################
+# # 10. FT Qwen2.5 VL 7B
+# # ============================== #
+# ### Unseen Self-Efficacy Posters
+# model: "unsloth/Qwen2-VL-7B-Instruct_task1_1_epochs_test_efficacy"
+# version: ":community_sim:test_efficacy"
+# vision: true    
+# trait: true    
+# # ============================== # 
+# ### Unseen Neutral Posters
+# model: "unsloth/Qwen2-VL-7B-Instruct_task1_1_epochs_test_neutral"
+# version: ":community_sim:test_neutral"
+# vision: true    
+# trait: true    
+# # ============================== # 
+# ### Unseen threatening posters
+# model: "unsloth/Qwen2-VL-7B-Instruct_task1_1_epochs_test_threatening"
+# version: ":community_sim:test_threaten"
+# vision: true    
+# trait: true    
+# ##################################
+
+# # ##################################
+# # # 11. Zero-shot Llava-v1.6 7B
+# # model: "unsloth/llava-v1.6-mistral-7b-hf"
+# # version: ":zeroshot"
+# # vision: true    # default 
+# # trait: true     # default
+# # ##################################
+# # # 12. FT Llava-v1.6 7B
+# # # ============================== #
+# # ### Unseen Self-Efficacy Posters
+# # model: "unsloth/llava-v1.6-mistral-7b-hf_task1_1_epochs_test_efficacy"
+# # version: ":community_sim:test_efficacy"
+# # vision: true    
+# # trait: true    
+# # # ============================== # 
+# # ### Unseen Neutral Posters
+# # model: "unsloth/llava-v1.6-mistral-7b-hf_task1_1_epochs_test_neutral"
+# # version: ":community_sim:test_neutral"
+# # vision: true    
+# # trait: true    
+# # # ============================== # 
+# # ### Unseen threatening posters
+# # model: "unsloth/llava-v1.6-mistral-7b-hf_task1_1_epochs_test_threatening"
+# # version: ":community_sim:test_threaten"
+# # vision: true    
+# # trait: true    
+# # ##################################
