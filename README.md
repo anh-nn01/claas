@@ -38,7 +38,7 @@ python create_dataset_task1.py --demo_full --include_big5 --include_facet --incl
 python create_dataset_task1.py --include_big5
 ```
 
-<p align="center">-------------------- **[Optional Reading on SFT Dataset Structure]** ---------------------</p>
+<p align="center">|-------------------- <b>[Optional Reading on SFT Dataset Structure]</b> ---------------------|</p>
 
 #### (a) Processed SFT Dataset Structure
 Each processed dataset split contains:
