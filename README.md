@@ -29,6 +29,17 @@ cd src
 **Purposes:**
 1) Generate structured training- and testing-split datasets for SFT **trait-aware alignment**. 
 2) Train and test set is split based on health poster's communication strategy (each poster has only 1 corresponding strategy).
+
+#### Script: SFT Dataset Split Generation
+```bash
+# Option D1: Full traits (All demographics + Big5 + Facet + Locus of Control)
+python create_dataset_task1.py --demo_full --include_big5 --include_facet --include_locus
+# Option D2: Partial traits (9 selected demographics + Big5)
+python create_dataset_task1.py --include_big5
+```
+
+<p align="center">-------------------- **[Optional Reading on SFT Dataset Structure]** ---------------------</p>
+
 #### (a) Processed SFT Dataset Structure
 Each processed dataset split contains:
 * **`instruction` / `Input`**: Prompts parsed with participant attributes (demographics, personality traits, visual stimuli).
@@ -49,13 +60,6 @@ Each processed dataset split contains:
 * **Split 3:** **"Threatening" Communication Strategy Holdout**
   * Train (`task1_it_train_holdout_threatening.csv`): Demographic/Personality Attributes + GT responses to `["self-efficacy", "informational / neutral"]` posters.
   * Test (`task1_it_test_holdout_threatening.csv`): Demographic/Personality Attributes + GT responses to `["threatening"]` posters.
-#### (d) SFT Dataset Split Generation
-```bash
-# Option D1: Full traits (All demographics + Big5 + Facet + Locus of Control)
-python create_dataset_task1.py --demo_full --include_big5 --include_facet --include_locus
-# Option D2: Partial traits (9 selected demographics + Big5)
-python create_dataset_task1.py --include_big5
-```
 
 
 ---
