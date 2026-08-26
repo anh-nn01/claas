@@ -3,7 +3,7 @@
 [![Website](https://img.shields.io/badge/Website-Project-purple)](#)
 [![Dataset](https://img.shields.io/badge/Dataset-HuggingFace-yellow)](#)
 
-![VLM-Enabled Attributed-Aware response Simulation](src/assets/VLM_sim_pipeline.png)
+<img src="src/assets/VLM_sim_pipeline.png" width=400>
 
 ---
 ## I. Installation
