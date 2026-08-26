@@ -6,70 +6,20 @@
 
 <!-- ![Paper Picture Highlight](assets/to_be_updated.png) -->
 
-## I. HPC allocation
-```bash
-# -> standard
-srun --pty --mem=32gb --time=3-00:00:00 --gres=gpu:rtxa6000:1 bash
-# -> more memory
-srun --pty --qos=medium --mem=64gb --time=2-00:00:00 --gres=gpu:rtxa5000:1 bash
-# -> most memory
-srun --pty --qos=high --mem=128gb --time=1-00:00:00 --gres=gpu:rtxa5000:1 bash
-# -> more cpu + more time
-srun --pty --qos=huge-long --cpus-per-gpu=32 --mem=32gb --time=8-00:00:00 --gres=gpu:rtxa6000:1 bash
-```
 
-<!-- ## Ollama installation without `sudo`
-0. Set `HOME` directory to project directory:
-    ```bash
-    pwd
-    export HOME=<your_project_path>
-    ```
-1. Install `ollama-linux-amd64` here: https://github.com/ollama/ollama/releases <br>
-    or 
-    ```bash
-    curl -L https://ollama.com/download/ollama-linux-amd64.tgz -o ollama-linux-amd64.tgz
-    ```
-2.  Create Ollama binary
-    ```bash
-    mkdir ollama
-    tar -C ./ollama -xzf ollama-linux-amd64.tgz
-    ```
-## Ollama deployment
-1. ***In another terminal (with `NODE_NAME`):*** Start Ollama 
-    ```bash
-    ./ollama/bin/ollama serve
-    ```
-2. Pull **LLaMA-3.2-Vision 11b**: (6gb)
-    ```bash
-    ./ollama/bin/ollama pull llama3.2-vision
-    ```
-    Pull **Gemma-3 Multimodal 12b**: (8.1Gb)
-    ```bash
-    ./ollama/bin/ollama pull gemma3:12b
-    ```
-    Pull **Gemma-3 Multimodal 12b-it-q8_0**: (13Gb)
-    ```bash
-    ./ollama/bin/ollama pull gemma3:12b-it-q8_0
-    ```
-3. Execute Ollama: 
-    ```
-    ssh <username>@<nodename> # e.g: ssh anhu@tron33
-    ./ollama/bin/ollama run llama3.2-vision
-    ``` -->
-
-## II. Installation Guide
+## I. Installation
 ```bash
-export HOME=/fs/nexus-projects/health_sim_ai # replace your HOME directory here
+export HOME=/fs/nexus-projects/health_sim_ai # replace your project directory here
 python3.12 venv -m venvs/llm
 source ./venvs/llm/bin/activate
 pip install -r requirements.txt
 ```
 
-## III. Usage: overall pipeline (after installation)
+## II. Training and Using VLM-enabled Attribute-Aware Response Simulation
 ### Step 0. Env activation
 ```bash
-export HOME=/fs/nexus-projects/health_sim_ai # replace your HOME directory here
-export TMPDIR=$HOME/tmp
+export HOME=/fs/nexus-projects/health_sim_ai # replace your Project directory here
+export TMPDIR=$HOME/tmp 
 mkdir -p $TMPDIR
 source ./venvs/llm/bin/activate
 cd src
@@ -265,3 +215,9 @@ python inference_pred_llm.py # args in `configs/task1_model_inference.yaml`
     2. Compute random baseline on-the-fly
         * `policy-random-uniform`: random baseline with uniform sampler
         * `policy-random-priors`: random baseline guided by prior distributions
+
+
+## 📜 Citation
+```
+To Be Updated
+```
