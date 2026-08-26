@@ -26,8 +26,9 @@ cd src
 ```
 ---
 ### Step 1. SFT Dataset Split & Creation
-* Generate training- and testing-specific datasets for **trait-aware alignment** using supervised fine-tuning (SFT). 
-* Train and test set is split based on health poster's communication strategy (each poster has only 1 corresponding strategy).
+**Purposes:**
+1) Generate structured training- and testing-split datasets for SFT **trait-aware alignment**. 
+2) Train and test set is split based on health poster's communication strategy (each poster has only 1 corresponding strategy).
 #### (a) Processed SFT Dataset Structure
 Each processed dataset split contains:
 * **`instruction` / `Input`**: Prompts parsed with participant attributes (demographics, personality traits, visual stimuli).
@@ -37,15 +38,15 @@ Each processed dataset split contains:
 * Ensure the pre-screened source dataset exists at: `data/survey_responses_screened.csv`.
 * *Note: If generated holdout CSVs already exist in `data/`, you can skip this split processing step.*
 #### (c) Holdout Splits by Poster's Communcation Strategy
-**Split 1:** **"Neutral" Communication Strategy Holdout**
+* **Split 1:** **"Neutral" Communication Strategy Holdout**
   * Train (`task1_it_train_holdout_neutral.csv`): Demographic/Personality Attributes + GT responses to `["threatening", "self-efficacy"]` posters.
   * Test (`task1_it_test_holdout_neutral.csv`): Demographic/Personality Attributes + GT responses to `["informational / neutral"]` posters.
 
-**Split 2:** **"Self-Efficacy" Communication Strategy Holdout**
+* **Split 2:** **"Self-Efficacy" Communication Strategy Holdout**
   * Train (`task1_it_train_holdout_efficacy.csv`): Demographic/Personality Attributes + GT responses to `["threatening", "informational / neutral"]` posters.
   * Test (`task1_it_test_holdout_efficacy.csv`): Demographic/Personality Attributes + GT responses to `["self-efficacy"]` posters.
 
-**Split 3:** **"Threatening" Communication Strategy Holdout**
+* **Split 3:** **"Threatening" Communication Strategy Holdout**
   * Train (`task1_it_train_holdout_threatening.csv`): Demographic/Personality Attributes + GT responses to `["self-efficacy", "informational / neutral"]` posters.
   * Test (`task1_it_test_holdout_threatening.csv`): Demographic/Personality Attributes + GT responses to `["threatening"]` posters.
 #### (d) SFT Dataset Split Generation
