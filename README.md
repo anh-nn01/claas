@@ -1,223 +1,109 @@
-# 🌱 CLAAS: Conditional LVLM-enabled Attribute-Aware response Simulation for Public Health Education   
-
-[![arXiV](https://img.shields.io/badge/arxiv-link-red)](https://i0.wp.com/www.shelbycountyyap.org/wp-content/uploads/2023/08/Website-Images.png?resize=900%2C900&ssl=1) 
-[![Website](https://img.shields.io/badge/website-link-purple)](https://i0.wp.com/www.shelbycountyyap.org/wp-content/uploads/2023/08/Website-Images.png?resize=900%2C900&ssl=1) 
-[![Dataset](https://img.shields.io/badge/dataset-huggingface-yellow)](https://i0.wp.com/www.shelbycountyyap.org/wp-content/uploads/2023/08/Website-Images.png?resize=900%2C900&ssl=1) 
-
-<!-- ![Paper Picture Highlight](assets/to_be_updated.png) -->
-
-
+# 🌱 CLAAS: Conditional LVLM-enabled Attribute-Aware Response Simulation for Public Health Education  
+[![arXiv](https://img.shields.io/badge/arXiv-Paper-red)](#)
+[![Website](https://img.shields.io/badge/Website-Project-purple)](#)
+[![Dataset](https://img.shields.io/badge/Dataset-HuggingFace-yellow)](#)
+---
 ## I. Installation
 ```bash
-export HOME=/fs/nexus-projects/health_sim_ai # replace your project directory here
-python3.12 venv -m venvs/llm
+# 1. Clone repository and navigate to project directory
+git clone https://github.com/anh-nn01/claas.git
+cd /path/to/claas/  # Replace with your project directory
+# 2. Create and activate virtual environment
+python3.12 -m venv venvs/llm
 source ./venvs/llm/bin/activate
+# 3. Install dependencies
 pip install -r requirements.txt
 ```
-
-## II. Training and Using VLM-enabled Attribute-Aware Response Simulation
-### Step 0. Env activation
+---
+## II. Training & Simulation Workflow
+### Step 0. Environment Activation
 ```bash
-export HOME=/fs/nexus-projects/health_sim_ai # replace your Project directory here
-export TMPDIR=$HOME/tmp 
+export WORKDIR=/path/to/claas/  # Replace with your project directory
+export TMPDIR=$WORKDIR/tmp
 mkdir -p $TMPDIR
 source ./venvs/llm/bin/activate
 cd src
 ```
 ---
-### Step 1. SFT Task dataset split and creation (Please read)
+### Step 1. SFT Dataset Split & Creation
+* Generate training- and testing-specific datasets for **trait-aware alignment** using supervised fine-tuning (SFT). 
+* Train and test set is split based on health poster's communication strategy (each poster has only 1 corresponding strategy).
+#### (a) Processed SFT Dataset Structure
+Each processed dataset split contains:
+* **`instruction` / `Input`**: Prompts parsed with participant attributes (demographics, personality traits, visual stimuli).
+* **`answer` / `Target`**: Processed ground-truth responses (Likert-scale numerical values or impact labels).
+* **`set`**: Dataset split assignment (`train` / `test`).
+#### (b) Prerequisites
+* Ensure the pre-screened source dataset exists at: `data/survey_responses_screened.csv`.
+* *Note: If generated holdout CSVs already exist in `data/`, you can skip this split processing step.*
+#### (c) Holdout Splits by Poster's Communcation Strategy
+**Split 1:** **"Neutral" Communication Strategy Holdout**
+  * Train (`task1_it_train_holdout_neutral.csv`): Demographic/Personality Attributes + GT responses to `["threatening", "self-efficacy"]` posters.
+  * Test (`task1_it_test_holdout_neutral.csv`): Demographic/Personality Attributes + GT responses to `["informational / neutral"]` posters.
 
-The **purpose** of this step is to generate **training- and testing-ready datasets** for *trait-aware alignment* using supervised fine-tuning (SFT).
+**Split 2:** **"Self-Efficacy" Communication Strategy Holdout**
+  * Train (`task1_it_train_holdout_efficacy.csv`): Demographic/Personality Attributes + GT responses to `["threatening", "informational / neutral"]` posters.
+  * Test (`task1_it_test_holdout_efficacy.csv`): Demographic/Personality Attributes + GT responses to `["self-efficacy"]` posters.
 
-### (a) Dataset Structure
-Each dataset contains the following core fields:
-- **`Input`**: Carefully crafted prompts with properly parsed attributes  
-  *(e.g., demographic traits, personality traits, visual stimuli)*  
-- **`Target`**: Processed ground-truth responses  
-  *(e.g., numerical values for Likert-scale items, short text labels for impact calibration)*
-
-### (b) Prerequisites
-- The cleaned, pre-screened, and pre-formatted source dataset **must** be available at:  
-  `data/survey_responses_screened.csv`
-- **Note**: If the datasets listed below already exist in the `data/` directory, you do **not** need to re-run the commands in this step.
-
-
-    Trait-aware Aligment Sets:
-    ### Task 1: *Trait-Aware Response Prediction*
-
-    **Holdout by poster type**
-
-    1. **Neutral Holdout**
-    - `task1_it_train_holdout_neutral.csv`  
-        *(Training)*: Traits + responses to **["threatening", "self-efficacy"]** posters  
-    - `task1_it_test_holdout_neutral.csv`  
-        *(Testing)*: Traits + responses to **["informational / neutral"]** posters  
-
-    2. **Self-Efficacy Holdout**
-    - `task1_it_train_holdout_efficacy.csv`  
-        *(Training)*: Traits + responses to **["threatening", "informational / neutral"]** posters  
-    - `task1_it_test_holdout_efficacy.csv`  
-        *(Testing)*: Traits + responses to **["self-efficacy"]** posters  
-
-    3. **Threatening Holdout**
-    - `task1_it_train_holdout_threatening.csv`  
-        *(Training)*: Traits + responses to **["self-efficacy", "informational / neutral"]** posters  
-    - `task1_it_test_holdout_threatening.csv`  
-        *(Testing)*: Traits + responses to **["threatening"]** posters  
-
-    ---
-
-    <!-- ### Task 2: *Trait-Aware Communication Strategy Impact Calibration*
-
-    **Holdout by topic**
-
-    - `task2_it_train_holdout_NutriHeart.csv`  
-    *(Training)*: Traits + impact scores for posters from **all topics except ["Heart Disease", "Nutrition"]**  
-    - `task2_it_test_holdout_NutriHeart.csv`  
-    *(Testing)*: Traits + impact scores for posters from **["Heart Disease", "Nutrition"]** -->
-
-    ---
-
-    <!-- * **Task 1:** *Trait-Aware Response Prediction*
-        1. `mcq_it_train_v3a`: (training) individuals' traits & their responses to `['threatening', 'self-efficacy']` posters
-        2. `mcq_it_test_v3a`: (testing) individials' trait & their responses to `['informational / neutral']` posters 
-        ---
-        3. `mcq_it_train_v3b`: (training) traits & responses to `['threatening', 'informational / neutral']` posters
-        4. `mcq_it_test_v3b`: (testing) traits & responses to `['self-efficacy']` posters
-        ---
-        5. `mcq_it_train_v3c`: (training) traits & responses to `['self-efficacy', 'informational / neutral']` posters
-        6. `mcq_it_test_v3c`: (testing) trait & responses to `['threatening']` posters
-    
-    * **Task 2:** *Trait-Aware Communication Strategy Impact Caliberation*
-        1. `mcq_it_train_recommender_v4_NutriHeart.csv`: (training) individuals' traits & impact scores of posters in *ALL topics except `["Heart Disease", "Nutrition"]`* on them.
-        2. `mcq_it_test__recommender_v4_NutriHeart.csv`: (testing) individuals' traits & impact scores of posters in *`["Heart Disease", "Nutrition"]`* on them. -->
-
-* Train/Test set format: columns `["instruction", "answer", "set"]`
-
-
-### (c) Dataset Generation Commands
-Execute these commands to craft the dataset(s) described above
+**Split 3:** **"Threatening" Communication Strategy Holdout**
+  * Train (`task1_it_train_holdout_threatening.csv`): Demographic/Personality Attributes + GT responses to `["self-efficacy", "informational / neutral"]` posters.
+  * Test (`task1_it_test_holdout_threatening.csv`): Demographic/Personality Attributes + GT responses to `["threatening"]` posters.
+#### (d) SFT Dataset Split Generation
 ```bash
-#####################################
-# create dataset(s) for Task 1
-#####################################
-# a) full traits (in the paper)
+# Option D1: Full traits (All demographics + Big5 + Facet + Locus of Control)
 python create_dataset_task1.py --demo_full --include_big5 --include_facet --include_locus
-# b) partial traits: 9 selected demographics + Big5 (pilot test)
+# Option D2: Partial traits (9 selected demographics + Big5)
 python create_dataset_task1.py --include_big5
-
-# # create dataset(s) for Task 2
-# python create_dataset_task2.py
 ```
-<!-- ```bash
-# create dataset(s) for Task 1
-python create_dataset_v3.py
-# create dataset(s) for Task 2
-python create_dataset_v4.py
-``` -->
 
 
-### Step 2. Model Training
-* Execute one of these 2 commands to train model for each specific task
-    ```bash
-    ########################################################################
-    # Task 1: VLM-enabled trait-aware response prediction
-    #       --model: [gemma, llama, qwen]
-    #       --visual_stimuli: [True, False] 
-    #                       # ablation study on visual impacts
-    #       --n_epochs: int # our experiment: 1
-    #       --test_style: [neutral, efficacy, threatening, train_on_all] 
-    #                       # styles of unseen test posters
-    #       --partial_traits: [True, False]
-    #                       # use full (all demographics + Big5 + locus of control) 
-                            # or partial traits (9 demographics + Big5)
-    #
-    #   * "train_on_all": train on all available data
-    #   * due to implementation issue, please use gemma 
-    #       when set visual_stimuli=False
-    # e.g. train multimodal Gemma with unseen "Information/Neutral" posters
-    ########################################################################
-    python train_pred_llm.py \
-        --model gemma \ # pixtral is not working due to version issues
-        --visual_stimuli True \
-        --n_epochs 1 \
-        --test_style neutral
-    
-    ########################################################################
-    # Task 2: LLM-enabled trait-aware style impact caliberation
-    #       --model: [gemma, llama]
-    #       --n_epochs: int # number of training epochs; our experiment: 7
-    #       --resample: [True, False] # our experiment: False
-    #                   # resample positive impacts <=> rebalance dataset
-    #                   # 1) include very positive samples only (score=9)
-    #                   # 2) duplicate very negative samples (score=1) 
-    #                   #    => increase under-represented data
-    #
-    ########################################################################
-    # python train_rec_llm.py
-    ```
-* Model training details:
-    1. Load pre-processed train/test set in Step 1 (compatible to UnSloth implementation)
-    2. Train/Test set are already processed with Instruction Tuning prompts (with embedded trait data & questions), plus the target response
-    3. Train model with LoRA using UnSloth
-        * configs are initialized with `configs/trainer_config.py`
-
-### Step 3. Model Inference
-* Execute one of these two commands to evaluate on each specific task (inference step)
+---
+### Step 2. Attribute Alignment Training: VLM-Enabled Response Prediction
+Attribute-Aware VLM Alignment Training using LoRA with Unsloth (`configs/trainer_config.py`).
 ```bash
-########################################################################
-# Task 1: VLM-enabled trait-aware response prediction
-#   * NOTE: all arguments, including model weights, export path,
-#           saving name, etc. should be modified in
-#           `configs/task1_model_inference.yaml` 
-########################################################################
-python inference_pred_llm.py # args in `configs/task1_model_inference.yaml`
-
-#######    [NOTE] ablation study    ########
-# To set ablation study, use `configs/task1_model_inference_ablat.yaml`
-#######         [END NOTE]          ########
-
-# ########################################################################
-# # Task 2: LLM-enabled trait-aware style impact caliberation
-# #       * NOTE: all arguments, including model weights, export path,
-# #          saving name, etc. should be modified in
-# #          `configs/task2_model_inference.yaml`
-# ########################################################################
-# python inference_rec_llm.py
+# Multimodal trait-aware response prediction
+# Note: Use 'gemma' when --visual_stimuli is False
+python train_pred_llm.py \
+   --model gemma \
+   --visual_stimuli True \
+   --n_epochs 1 \
+   --test_style neutral
 ```
+**Key Training Arguments:**
+* `--model`: `[gemma, llama, qwen]`
+* `--visual_stimuli`: `[True, False]` (ablation study on visual impact)
+* `--test_style`: `[neutral, efficacy, threatening, train_on_all]`
+* `--partial_traits`: `[True, False]` (use full or partial traits)
+* `--n_epochs`: Number of training epochs (default: `1`)
+---
+### Step 3. Inference: Attribute-Aware VLM-enabled Response Prediction
+Run inference and record model responses across benchmarking and attribute-aligned models.
+```bash
+# Inference: configure weights and paths in `configs/task1_model_inference.yaml`
+python inference_pred_llm.py
 
-* The evaluation results are stored in `src/evals/`
-
-* Model:s <br>
-    * Each model's responses are recorded in an unique columns, formatted as dictionary `{"Q1": int, "Q2": int, ...}` <br>
-    * The models are as follow:
-    1. `gemma3-12b (zero-shot)`
-    2. `gemma3-4b (zero-shot)`
-    3. `gemma3-12b (FT)`
-    4. `gemma3-4b (FT)`
-        ***
-    5. `Llama3.2-11B-Vision (zero-shot)`
-    6. `Llama3.2-11B-Vision (FT)`
-        ***
-    7. `gemma3-4b (no vision, FT)` 
-    8. `gemma3-4b (no trait, FT)`
-    9. `gemma3-4b (no trait, zero-shot)`
-        ***
-    10. `Qwen2.5-VL-7B (zero-shot)`
-    11. `Qwen2.5-VL-7B (FT)`
-        ***
-
-
-
-### Step 4. Model Evaluation / Performance Analysis
-* `healthai_model_analysis.ipynb`
-    1. Evaluate model performance
-    2. Compute random baseline on-the-fly
-        * `policy-random-uniform`: random baseline with uniform sampler
-        * `policy-random-priors`: random baseline guided by prior distributions
-
-
+# Inference ablation studies:
+# Configure options in `configs/task1_model_inference_ablat.yaml`
+```
+* Evaluation outputs are saved to `src/evals/`.
+* Responses are recorded per column as dictionaries: 
+    `{"Q1": int, "Q2": int, ..., "Q13": int}` representing different survey questions and Likert-scale answers.
+#### Evaluated Model Baselines:
+* **Gemma 3:** `gemma3-12b` (Zero-shot / FT), `gemma3-4b` (Zero-shot / FT)
+* **Gemma 3 Ablations:** `gemma3-4b` (No-vision FT, No-trait FT, No-trait zero-shot)
+* **Llama 3.2:** `Llama3.2-11B-Vision` (Zero-shot / FT)
+* **Qwen 2.5:** `Qwen2.5-VL-7B` (Zero-shot / FT)
+---
+### Step 4. Model Evaluation & Performance Analysis
+Open and run `healthai_model_analysis.ipynb` to:
+1. Evaluate model performance and alignment scores.
+2. Compute on-the-fly random baselines:
+  * `policy-random-uniform`: Uniform random sampler.
+  * `policy-random-priors`: Prior distribution-guided sampler.
+---
 ## 📜 Citation
+```bibtex
+To be updated
 ```
-To Be Updated
-```
+
+
