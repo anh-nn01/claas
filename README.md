@@ -1,3 +1,11 @@
+# 🌱 CLAAS: Conditional LVLM-enabled Attribute-Aware response Simulation for Public Health Education   
+
+[![arXiV](https://img.shields.io/badge/arxiv-link-red)](google.com) 
+[![Website](https://img.shields.io/badge/website-link-purple)](google.com) 
+[![Dataset](https://img.shields.io/badge/dataset-huggingface-yellow)](google.com) 
+
+<!-- ![Paper Picture Highlight](assets/to_be_updated.png) -->
+
 ## I. HPC allocation
 ```bash
 # -> standard
