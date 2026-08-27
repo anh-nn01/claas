@@ -108,7 +108,9 @@ python inference_pred_llm.py
 * **Qwen 2.5:** `Qwen2.5-VL-7B` (Zero-shot / FT)
 ---
 ### Step 4. Model Evaluation & Performance Analysis
-Open and run `healthai_model_analysis.ipynb` to:
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1WOe0Pg_RqwrsFb3ajhKpGvfabS1ed955?usp=sharing)
+
+Please use the notebook above to:
 1. Measure model performance and alignment using predicted and ground-truth (GT) Likert-scale responses.
 2. Evaluate each model only on its corresponding held-out test set, where responses are associated with an unseen communication strategy.
 3. Compute random baselines at evaluation time:
