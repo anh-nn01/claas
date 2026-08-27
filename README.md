@@ -4,7 +4,7 @@
 [![Dataset](https://img.shields.io/badge/Dataset-HuggingFace-yellow)](#)
 
 <p align="center">
-    <img src="src/assets/VLM_sim_pipeline.png" width="80%"><br>
+    <img src="src/assets/VLM_sim_pipeline.png" width="70%"><br><br>
     <img src="src/assets/CLAAS.png" width="90%"><br>
 </object>
 </p>
