@@ -16,8 +16,14 @@ src/.gradio/
 src/demo_task1_backup.py
 src/demo_llm.py
 src/wandb
-src/__pycache__
+src/__pycache_
 *.pyc
+
+
+# Gated data access complying with IRB Regulation
+data/*.csv
+stimuli/*.png
+src/evals/*.csv  # this also contains the attribute information; 
 
 
 # Ignore local env / caches

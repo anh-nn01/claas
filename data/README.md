@@ -1,4 +1,4 @@
-# 🔒 Dataset Access Notice
+# 📚 Dataset Access Notice
 
 Thank you for your interest in our work.
 
