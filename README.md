@@ -4,7 +4,8 @@
 [![Dataset](https://img.shields.io/badge/Dataset-HuggingFace-yellow)](#)
 
 <p align="center">
-    <img src="src/assets/VLM_sim_pipeline.png" width=600>
+    <img src="src/assets/VLM_sim_pipeline.png" width="90%">
+    <iframe src="src/assets/CLAAS.pdf" width="90%"></iframe>
 </p>
 
 ---
