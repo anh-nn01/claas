@@ -4,9 +4,12 @@
 [![Dataset](https://img.shields.io/badge/Dataset-HuggingFace-yellow)](#)
 
 <p align="center">
-    <img src="src/assets/VLM_sim_pipeline.png" width="90%">
+    <img src="src/assets/VLM_sim_pipeline.png" width="90%"><br>
+    <object data="src/assets/CLAAS.pdf" type="application/pdf" width="90%">
+</object>
 </p>
-![CLAAS Pipeline](src/assets/CLAAS.pdf)
+
+
 
 ---
 ## I. Installation
