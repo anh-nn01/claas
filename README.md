@@ -1,7 +1,6 @@
 # 🌱 CLAAS: Conditional LVLM-enabled Attribute-Aware Response Simulation for Public Health Education  
 [![arXiv](https://img.shields.io/badge/arXiv-Paper-red)](#)
 [![Website](https://img.shields.io/badge/Website-Project-purple)](#)
-[![Dataset](https://img.shields.io/badge/Dataset-HuggingFace-yellow)](#)
 
 <p align="center">
     <img src="src/assets/VLM_sim_pipeline.png" width="50%"><br><br>
