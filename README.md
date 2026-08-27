@@ -123,7 +123,7 @@ Please use the notebook above to:
 ## ⏳ TODO
 - [ ] Add webpage for the project
 - [ ] Update Likert2Language module with close-source model APIs (e.g. GPT-5.6)
-- [ ] Upload Colab link to evaluation notebook
+- [x] Upload Colab link to evaluation notebook
 
 
 ## 📜 Citation
