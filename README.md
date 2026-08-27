@@ -113,9 +113,10 @@ python inference_pred_llm.py
 Please use the notebook above to:
 1. Measure model performance and alignment using predicted and ground-truth (GT) Likert-scale responses.
 2. Evaluate each model only on its corresponding held-out test set, where responses are associated with an unseen communication strategy.
-3. Compute random baselines at evaluation time:
+3. Compute baselines at evaluation time:
   - `policy-random-uniform`: samples responses uniformly at random.
   - `policy-random-priors`: samples responses according to prior distributions.
+4. Run ablations studies (assuming you have logged ablated models' responses to `task1_ai_respones.csv`).
 ---
 
 
