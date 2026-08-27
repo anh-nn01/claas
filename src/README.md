@@ -1,4 +1,4 @@
-General structure:
+## General structure
 1) `../data/`: the raw dataset; processed SFT dataset splits are also saved here.
 2) `../stimuli`: health campaign posters (visual stimuli).
 3) `./configs/`: configs for training and inference process.
