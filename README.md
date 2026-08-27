@@ -5,8 +5,8 @@
 
 <p align="center">
     <img src="src/assets/VLM_sim_pipeline.png" width="90%">
-    <iframe src="src/assets/CLAAS.pdf" width="90%"></iframe>
 </p>
+![CLAAS Pipeline](src/assets/CLAAS.pdf)
 
 ---
 ## I. Installation
