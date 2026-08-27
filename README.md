@@ -118,7 +118,6 @@ Open and run `healthai_model_analysis.ipynb` to:
 - [ ] Add webpage for the project
 - [ ] Update Likert2Language module with close-source model APIs (e.g. GPT-5.6)
 - [ ] Upload Colab link to evaluation notebook
-- [ ] Upload Colab link to Likert2Language ablation module (used in manual human evaluation)
 
 
 ## 📜 Citation
