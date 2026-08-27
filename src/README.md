@@ -1,9 +1,10 @@
-This `src/` directory contains:
-1) `./data/`: the raw dataset; processed SFT dataset splits are also saved here.
-2) `./configs/`: configs for training and inference process.
-3) `./sbatch/`: bash scripts for training, inference, Gradio demo launch, ablation scripts, and logs.
-4) Implementation of training, inference, and simple Gradio app interface.
-5) `./eval/`: save each model's attribute-aware Likert-scale responses to visual health posters for all samples in the dataset.
+General structure:
+1) `../data/`: the raw dataset; processed SFT dataset splits are also saved here.
+2) `../stimuli`: health campaign posters (visual stimuli).
+3) `./configs/`: configs for training and inference process.
+4) `./sbatch/`: bash scripts for training, inference, Gradio demo launch, ablation scripts, and logs.
+5) Implementation of training, inference, and simple Gradio app interface.
+6) `./eval/`: save each model's attribute-aware Likert-scale responses to visual health posters for all samples in the dataset.
 
 ## Core implementations
 
